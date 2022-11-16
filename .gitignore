@@ -4,4 +4,5 @@ vendor
 npm-debug.log
 yarn-error.log
 composer.lock
+package-lock.json
 .php-cs-fixer.cache
