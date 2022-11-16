@@ -33,12 +33,12 @@ class ServiceProvider extends TwillPackageServiceProvider
         );
     }
 
-    public function registerViews()
+    public function registerViews(): void
     {
         $this->loadViewsFrom(__DIR__.'/resources/views', 'twill-google-recaptcha');
     }
 
-    public function registerConfig()
+    public function registerConfig(): void
     {
         $this->publishes([
             __DIR__.'/config/twill-google-recaptcha.php' => config_path('twill-google-recaptcha.php'),

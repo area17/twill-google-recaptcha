@@ -4,12 +4,10 @@ namespace A17\TwillGoogleRecaptcha\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
-use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\Factory;
-use A17\TwillGoogleRecaptcha\Support\Transformer;
 use A17\TwillGoogleRecaptcha\Support\Validator as GoogleRecaptchaValidator;
 
-class TwillGoogleRecaptchaFrontController extends Controller
+class TwillGoogleRecaptchaFrontController
 {
     public function show(): View|Factory
     {
@@ -18,7 +16,7 @@ class TwillGoogleRecaptchaFrontController extends Controller
         /** @var view-string $view */
         $view = 'google-recaptcha::front.form';
 
-        return view($view, _transform(new Transformer()));
+        return view($view);
     }
 
     public function store(Request $request): array

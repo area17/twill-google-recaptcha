@@ -74,10 +74,6 @@ class GoogleRecaptcha
     {
         $googleRecaptcha = app(TwillGoogleRecaptchaRepository::class)->theOnlyOne();
 
-        if (empty($googleRecaptcha)) {
-            return null;
-        }
-
         return $googleRecaptcha->getAttributes()[$string] ?? null;
     }
 

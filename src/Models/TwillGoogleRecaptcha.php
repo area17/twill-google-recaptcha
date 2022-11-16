@@ -6,6 +6,7 @@ use A17\Twill\Models\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Crypt;
 use A17\Twill\Models\Behaviors\HasRevisions;
+use Throwable;
 
 class TwillGoogleRecaptcha extends Model
 {
@@ -38,15 +39,24 @@ class TwillGoogleRecaptcha extends Model
         return google_recaptcha()->published(true);
     }
 
-    public function encrypt($value)
+    public function encrypt($value): string|null
     {
-        return Crypt::encryptString($value);
+        $encrypted = 'ENCRYPTION ERROR';
+
+        try {
+            $encrypted = Crypt::encryptString($value);
+        } catch (\Throwable) {
+        }
+
+        return $encrypted;
     }
 
-    public function decrypt($value)
+    public function decrypt($value): string|null
     {
+        $decrypted = '';
+
         try {
-            $decrypted = Crypt::decryptString($value);
+            // $decrypted = Crypt::decryptString($value);
         } catch (\Throwable) {
             $decrypted = $value;
         }

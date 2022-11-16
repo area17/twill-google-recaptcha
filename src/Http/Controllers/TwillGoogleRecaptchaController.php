@@ -26,7 +26,7 @@ class TwillGoogleRecaptchaController extends ModuleController
 
     /**
      * @param int|null $parentModuleId
-     * @return array|\Illuminate\View\View
+     * @return array|\Illuminate\View\View|RedirectResponse
      */
     public function index($parentModuleId = null)
     {
@@ -36,8 +36,9 @@ class TwillGoogleRecaptchaController extends ModuleController
     /**
      * @param int $id
      * @param int|null $submoduleId
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function edit($id, $submoduleId = null): JsonResponse|RedirectResponse|View
+    public function edit($id, $submoduleId = null)
     {
         $repository = new TwillGoogleRecaptchaRepository(new TwillGoogleRecaptcha());
 
@@ -52,7 +53,7 @@ class TwillGoogleRecaptchaController extends ModuleController
         ];
     }
 
-    protected function getViewPrefix(): ?string
+    protected function getViewPrefix(): string|null
     {
         return 'twill-google-recaptcha::admin';
     }
