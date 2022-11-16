@@ -32,11 +32,11 @@ public function register()
 
 ```php
 Route::prefix('/debug')->group(function () {
-    Route::get('/google-recaptcha-3', [GoogleRecaptchaFrontController::class, 'show'])->name(
+    Route::get('/google-recaptcha-3', [A17\TwillGoogleRecaptcha\Http\Controllers\TwillGoogleRecaptchaFrontController::class, 'show'])->name(
         'google-recaptcha.show',
     );
 
-    Route::post('/google-recaptcha-3', [GoogleRecaptchaFrontController::class, 'store'])->name(
+    Route::post('/google-recaptcha-3', [A17\TwillGoogleRecaptcha\Http\Controllers\TwillGoogleRecaptchaFrontController::class, 'store'])->name(
         'google-recaptcha.store',
     );
 });
