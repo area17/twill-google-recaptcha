@@ -35,6 +35,10 @@ class ServiceProvider extends TwillPackageServiceProvider
 
     public function registerViews(): void
     {
+        view()->share(
+            'twillGoogleRecaptcha',
+            google_recaptcha()->config() + ['asset' => google_recaptcha()->asset()]
+        );
         $this->loadViewsFrom(__DIR__.'/resources/views', 'twill-google-recaptcha');
     }
 

@@ -18,7 +18,7 @@
            name="input1"
            type="text">
 
-    @if ($google_recaptcha['enabled'])
+    @if ($twillGoogleRecaptcha['enabled'])
         <input id="g-recaptcha-response"
                name="g-recaptcha-response"
                type="hidden">
@@ -33,18 +33,18 @@
 
     <br>
 
-    <div>Site key: {{ $google_recaptcha['site_key'] }}</div>
+    <div>Site key: {{ $twillGoogleRecaptcha['keys']['site'] }}</div>
 </form>
 
-@if ($google_recaptcha['enabled'])
-    <script src="{{ $google_recaptcha['asset'] }}"></script>
+@if ($twillGoogleRecaptcha['enabled'])
+    <script src="{{ $twillGoogleRecaptcha['asset'] }}"></script>
 
     <script>
         console.log('Google Recaptcha 3 loaded');
 
         function onSubmitClick(e) {
             grecaptcha.ready(function() {
-                grecaptcha.execute('{{ $google_recaptcha['site_key'] }}', {
+                grecaptcha.execute('{{ $twillGoogleRecaptcha['keys']['site'] }}', {
                     action: 'submit'
                 }).then(function(token) {
                     document.getElementById("g-recaptcha-response").value = token;
