@@ -1,8 +1,32 @@
 # Google reCAPTCHA v3 Twill Capsule
 
-## Installation
+## Installing
 
-#### Clone / Copy this capsule into `app/Twill/Capsules/GoogleRecaptchas`
+### Require the Composer package:
+
+``` bash
+composer require area17/twill-google-recaptcha
+``` 
+
+### Publish the configuration
+
+``` bash
+php artisan vendor:publish --provider="A17\TwillGoogleRecaptcha\ServiceProvider"
+```
+
+### Load Capsule helpers by adding calling the loader to your AppServiceProvider:
+
+``` php
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function register()
+{
+    \A17\TwillFeatureFlags\Services\Helpers::load();
+}
+```
 
 #### Create debugging routes to check if it's all good
 
@@ -31,9 +55,9 @@ Head to: http://site.com/debug/google-recaptcha-3
 #### Captcha keys works both on .env or in the CMS settings, but .env trumps the CMS settings
 
 ```dotenv
-GOOGLE_RECAPTCHA_SITE_KEY=61df2g3hjkj7hgf6df54g3hj2kl3k4j5h6G
-GOOGLE_RECAPTCHA_PRIVATE_KEY=6Lg5h43jkl45k6jh7g6h5j4kl3nj5k4l3P
-GOOGLE_RECAPTCHA_ENABLED=true
+TWILL_GOOGLE_RECAPTCHA_SITE_KEY=61df2g3hjkj7hgf6df54g3hj2kl3k4j5h6G
+TWILL_GOOGLE_RECAPTCHA_PRIVATE_KEY=6Lg5h43jkl45k6jh7g6h5j4kl3nj5k4l3P
+TWILL_GOOGLE_RECAPTCHA_ENABLED=true
 ```
 
 #### Check the working form example
