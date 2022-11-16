@@ -39,4 +39,9 @@ class TwillGoogleRecaptcha extends Model
     {
         return google_recaptcha()->published(true);
     }
+
+    public function revisions()
+    {
+        return $this->hasMany($this->getRevisionModel(), 'twill_grecaptcha_id')->orderBy('created_at', 'desc');
+    }
 }
