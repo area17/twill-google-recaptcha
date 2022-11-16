@@ -1,14 +1,12 @@
 <?php
 
-use App\Support\Facades\Route;
-use App\Twill\Capsules\GoogleRecaptchas\Http\Controllers\GoogleRecaptchaController;
+use A17\TwillFeatureFlags\Support\Facades\Route;
+use A17\TwillGoogleRecaptcha\Http\Controllers\TwillGoogleRecaptchaController;
 
-Route::prefix('config')->group(function () {
-    Route::name('config.googleRecaptchas.redirectToEdit')->get('/googleRecaptchas/redirectToEdit', [
-        GoogleRecaptchaController::class,
-        'redirectToEdit',
-    ]);
+Route::name('twillGoogleRecaptcha.redirectToEdit')->get('/twillGoogleRecaptchas/redirectToEdit', [
+    TwillGoogleRecaptchaController::class,
+    'redirectToEdit',
+]);
 
-    // @phpstan-ignore-next-line
-    Route::module('googleRecaptchas');
-});
+// @phpstan-ignore-next-line
+Route::module('twillGoogleRecaptcha');

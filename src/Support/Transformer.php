@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Twill\Capsules\GoogleRecaptchas\Support;
+namespace A17\TwillGoogleRecaptcha\Support;
 
 use App\Transformers\Transformer as AppTransformer;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Twill\Capsules\GoogleRecaptchas\Http\Requests;
+namespace A17\TwillGoogleRecaptcha\Http\Requests;
 
 use A17\Twill\Http\Requests\Admin\Request;
 
-class GoogleRecaptchaRequest extends Request
+class TwillGoogleRecaptchaRequest extends Request
 {
     public function rulesForCreate(): array
     {

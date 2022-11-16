@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Twill\Capsules\GoogleRecaptchas\Support;
+namespace A17\TwillGoogleRecaptcha\Support;
 
 use Illuminate\Support\Arr;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\View;
-use App\Twill\Capsules\GoogleRecaptchas\Models\GoogleRecaptcha as GoogleRecaptchaModel;
+use A17\TwillGoogleRecaptcha\Repositories\TwillGoogleRecaptchaRepository;
+use A17\TwillGoogleRecaptcha\Models\TwillGoogleRecaptcha as TwillGoogleRecaptchaModel;
 
 class GoogleRecaptcha
 {
@@ -29,7 +30,7 @@ class GoogleRecaptcha
 
     public function config(string|null $key = null): mixed
     {
-        $this->config ??= filled($this->config) ? $this->config : (array) config('google-recaptcha');
+        $this->config ??= filled($this->config) ? $this->config : (array) config('twill-google-recaptcha');
 
         if (blank($key)) {
             return $this->config;
@@ -55,6 +56,11 @@ class GoogleRecaptcha
         return $this->get('keys.site', 'site_key', $force);
     }
 
+    public function published(bool $force = false): string|null
+    {
+        return $this->get('enabled', 'published', $force);
+    }
+
     public function get(string $configKey, string $databaseColumn, bool $force = false): string|null
     {
         if (!$force && (!$this->isConfigured() || !$this->enabled())) {
@@ -66,7 +72,7 @@ class GoogleRecaptcha
 
     private function readFromDatabase(string $string): string|bool|null
     {
-        $googleRecaptcha = GoogleRecaptchaModel::first();
+        $googleRecaptcha = app(TwillGoogleRecaptchaRepository::class)->theOnlyOne();
 
         if (empty($googleRecaptcha)) {
             return null;

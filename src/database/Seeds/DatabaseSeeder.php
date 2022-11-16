@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Twill\Capsules\GoogleRecaptchas\Database\Seeds;
+namespace A17\TwillGoogleRecaptcha\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 

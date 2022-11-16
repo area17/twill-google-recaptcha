@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Twill\Capsules\GoogleRecaptchas\Http\Controllers;
+namespace A17\TwillGoogleRecaptcha\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\Factory;
-use App\Twill\Capsules\GoogleRecaptchas\Support\Transformer;
-use App\Twill\Capsules\GoogleRecaptchas\Support\Validator as GoogleRecaptchaValidator;
+use A17\TwillGoogleRecaptcha\Support\Transformer;
+use A17\TwillGoogleRecaptcha\Support\Validator as GoogleRecaptchaValidator;
 
-class GoogleRecaptchaFrontController extends Controller
+class TwillGoogleRecaptchaFrontController extends Controller
 {
     public function show(): View|Factory
     {

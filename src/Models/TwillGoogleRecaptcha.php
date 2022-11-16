@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Twill\Capsules\GoogleRecaptchas\Models;
+namespace A17\TwillGoogleRecaptcha\Models;
 
 use A17\Twill\Models\Model;
 use A17\Twill\Models\Behaviors\HasRevisions;
 
-class GoogleRecaptcha extends Model
+class TwillGoogleRecaptcha extends Model
 {
     use HasRevisions;
 
@@ -19,5 +19,10 @@ class GoogleRecaptcha extends Model
     public function getPrivateKeyAttribute(): string|null
     {
         return google_recaptcha()->privateKey(true);
+    }
+
+    public function getPublishedAttribute(): string|null
+    {
+        return google_recaptcha()->published(true);
     }
 }

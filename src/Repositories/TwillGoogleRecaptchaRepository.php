@@ -1,28 +1,23 @@
 <?php
 
-namespace App\Twill\Capsules\GoogleRecaptchas\Repositories;
+namespace A17\TwillGoogleRecaptcha\Repositories;
 
 use A17\Twill\Repositories\ModuleRepository;
 use A17\Twill\Repositories\Behaviors\HandleRevisions;
-use App\Twill\Capsules\GoogleRecaptchas\Models\GoogleRecaptcha;
+use A17\TwillGoogleRecaptcha\Models\TwillGoogleRecaptcha;
 
-class GoogleRecaptchaRepository extends ModuleRepository
+class TwillGoogleRecaptchaRepository extends ModuleRepository
 {
     use HandleRevisions;
 
-    public function __construct(GoogleRecaptcha $model)
+    public function __construct(TwillGoogleRecaptcha $model)
     {
         $this->model = $model;
     }
 
-    public function getPage(): GoogleRecaptcha
+    public function theOnlyOne(): TwillGoogleRecaptcha
     {
-        return $this->theOnlyOne();
-    }
-
-    public function theOnlyOne(): GoogleRecaptcha
-    {
-        $record = GoogleRecaptcha::query()
+        $record = TwillGoogleRecaptcha::query()
             ->published()
             ->orderBy('id')
             ->first();
@@ -30,7 +25,7 @@ class GoogleRecaptchaRepository extends ModuleRepository
         return $record ?? $this->generate();
     }
 
-    private function generate(): GoogleRecaptcha
+    private function generate(): TwillGoogleRecaptcha
     {
         return app(self::class)->create([
             'site_key' => null,
