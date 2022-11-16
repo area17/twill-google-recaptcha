@@ -6,11 +6,12 @@ use A17\Twill\Models\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Crypt;
 use A17\Twill\Models\Behaviors\HasRevisions;
-use Throwable;
+use A17\TwillGoogleRecaptcha\Models\Behaviors\Encrypt;
 
 class TwillGoogleRecaptcha extends Model
 {
     use HasRevisions;
+    use Encrypt;
 
     protected $fillable = ['published', 'site_key', 'private_key'];
 
@@ -19,7 +20,7 @@ class TwillGoogleRecaptcha extends Model
         return $this->decrypt(google_recaptcha()->siteKey(true));
     }
 
-    public function setSiteKeyAttribute($value): void
+    public function setSiteKeyAttribute(string|null $value): void
     {
         $this->attributes['site_key'] = $this->encrypt($value);
     }
@@ -29,7 +30,7 @@ class TwillGoogleRecaptcha extends Model
         return $this->decrypt(google_recaptcha()->privateKey(true));
     }
 
-    public function setPrivateKeyAttribute($value): void
+    public function setPrivateKeyAttribute(string|null $value): void
     {
         $this->attributes['private_key'] = $this->encrypt($value);
     }
@@ -37,30 +38,5 @@ class TwillGoogleRecaptcha extends Model
     public function getPublishedAttribute(): string|null
     {
         return google_recaptcha()->published(true);
-    }
-
-    public function encrypt($value): string|null
-    {
-        $encrypted = 'ENCRYPTION ERROR';
-
-        try {
-            $encrypted = Crypt::encryptString($value);
-        } catch (\Throwable) {
-        }
-
-        return $encrypted;
-    }
-
-    public function decrypt($value): string|null
-    {
-        $decrypted = '';
-
-        try {
-            $decrypted = Crypt::decryptString($value);
-        } catch (\Throwable) {
-            $decrypted = $value;
-        }
-
-        return $decrypted;
     }
 }

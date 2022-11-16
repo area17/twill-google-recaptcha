@@ -7,8 +7,6 @@ parameters:
 
     level: 8
 
-    excludePaths:
-
     checkMissingIterableValueType: false
 
     universalObjectCratesClasses:
@@ -18,3 +16,7 @@ parameters:
     reportUnmatchedIgnoredErrors: false
 
     checkGenericClassInNonGenericObjectType: false
+
+    excludePaths:
+      analyseAndScan:
+        - src/Models/Behaviors/Encrypt.php
