@@ -24,7 +24,7 @@ php artisan vendor:publish --provider="A17\TwillGoogleRecaptcha\ServiceProvider"
  */
 public function register()
 {
-    \A17\TwillFeatureFlags\Services\Helpers::load();
+    \A17\TwillGoogleRecaptcha\Services\Helpers::load();
 }
 ```
 
