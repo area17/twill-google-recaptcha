@@ -56,7 +56,7 @@ class TwillGoogleRecaptcha extends Model
         $decrypted = '';
 
         try {
-            // $decrypted = Crypt::decryptString($value);
+            $decrypted = Crypt::decryptString($value);
         } catch (\Throwable) {
             $decrypted = $value;
         }
