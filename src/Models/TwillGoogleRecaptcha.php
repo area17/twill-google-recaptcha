@@ -45,6 +45,6 @@ class TwillGoogleRecaptcha extends Model
 
     public function revisions(): HasMany
     {
-        return $this->hasMany($this->getRevisionModel(), 'twill_grecaptcha_id')->orderBy('created_at', 'desc');
+        return $this->hasMany($this->getRevisionModel(), 'twill_ggl_captcha_id')->orderBy('created_at', 'desc');
     }
 }
