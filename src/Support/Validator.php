@@ -2,22 +2,23 @@
 
 namespace A17\TwillGoogleRecaptcha\Support;
 
-use Illuminate\Contracts\Validation\InvokableRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Validator implements InvokableRule
+class Validator implements Rule
 {
-    /**
-     * Run the validation rule.
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @param  \Closure  $fail
-     * @return void
-     */
-    public function __invoke($attribute, $value, $fail): void
+    protected $messages = [];
+
+    public function passes($attribute, $value)
     {
         if (google_recaptcha()->fails()) {
-            $fail(google_recaptcha()->failedMessage());
+            return $fail(google_recaptcha()->failedMessage());
         }
+
+        return $this->messages === [];
+    }
+
+    public function message()
+    {
+        return $this->messages;
     }
 }
