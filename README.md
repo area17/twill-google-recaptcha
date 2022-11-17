@@ -6,7 +6,7 @@
 
 ``` bash
 composer require area17/twill-google-recaptcha
-``` 
+```
 
 ### Publish the configuration
 
@@ -67,7 +67,7 @@ File: app/Twill/Capsules/GoogleRecaptchas/resources/views/front/form.blade.php
 #### Use the validator
 
 ```php
-use App\Twill\Capsules\GoogleRecaptchas\Support\Validator as GoogleRecaptchaValidator;
+use A17\TwillGoogleRecaptcha\Support\Validator as GoogleRecaptchaValidator;
 
 $request->validate([
     'g-recaptcha-response' => ['required', 'string', new GoogleRecaptchaValidator()],
