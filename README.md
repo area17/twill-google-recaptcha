@@ -48,6 +48,14 @@ Route::prefix('/debug')->group(function () {
 'google_recaptcha' => 'Failed invisible Google reCAPTCHA, please try again.',
 ```
 
+#### Sharing it in your views
+
+To have a `$twillGoogleRecaptcha` shared on your views, you can call this helper on your `AppServiceProvider`: 
+
+``` php
+\A17\TwillGoogleRecaptcha\Services\Helpers::viewShare()
+```
+
 #### Test it out
 
 Head to: http://site.com/debug/google-recaptcha-3

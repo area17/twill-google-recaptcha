@@ -5,7 +5,7 @@ return [
 
     'validation' => [
         'lang_key' => 'validation.google_recaptcha',
-        'failed' => 'Invisible captcha failed.',
+        'failed' => \A17\TwillGoogleRecaptcha\Support\GoogleRecaptcha::DEFAULT_ERROR_MESSAGE,
     ],
 
     'keys' => [

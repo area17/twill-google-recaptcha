@@ -8,7 +8,7 @@ class CreateGoogleRecaptchasTables extends Migration
 {
     public function up(): void
     {
-        Schema::create('twill_grecaptchas', function (Blueprint $table) {
+        Schema::create('twill_ggl_captcha', function (Blueprint $table) {
             createDefaultTableFields($table);
 
             $table->string('site_key')->nullable();
@@ -16,14 +16,14 @@ class CreateGoogleRecaptchasTables extends Migration
             $table->string('private_key')->nullable();
         });
 
-        Schema::create('twill_grecaptcha_revisions', function (Blueprint $table) {
-            createDefaultRevisionsTableFields($table, 'twill_grecaptcha');
+        Schema::create('twill_ggl_captcha_revisions', function (Blueprint $table) {
+            createDefaultRevisionsTableFields($table, 'twill_ggl_captcha', 'twill_ggl_captcha');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('twill_grecaptcha_revisions');
-        Schema::dropIfExists('twill_grecaptchas');
+        Schema::dropIfExists('twill_ggl_captcha_revisions');
+        Schema::dropIfExists('twill_ggl_captcha');
     }
 }

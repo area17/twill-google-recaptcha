@@ -6,19 +6,13 @@ use Illuminate\Contracts\Validation\Rule;
 
 class Validator implements Rule
 {
-    protected $messages = [];
-
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
-        if (google_recaptcha()->fails()) {
-            return $fail(google_recaptcha()->failedMessage());
-        }
-
-        return $this->messages === [];
+        return google_recaptcha()->fails();
     }
 
-    public function message()
+    public function message(): string
     {
-        return $this->messages;
+        return google_recaptcha()->failedMessage();
     }
 }

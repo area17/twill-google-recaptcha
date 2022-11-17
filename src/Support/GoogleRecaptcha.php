@@ -11,6 +11,8 @@ use A17\TwillGoogleRecaptcha\Models\TwillGoogleRecaptcha as TwillGoogleRecaptcha
 
 class GoogleRecaptcha
 {
+    public const DEFAULT_ERROR_MESSAGE = 'Invisible captcha failed.';
+
     protected array|null $config = null;
 
     protected bool|null $isConfigured = null;
@@ -148,7 +150,7 @@ class GoogleRecaptcha
         return $responseToken ?? request()->input('g-recaptcha-response');
     }
 
-    public function failedMessage(): string|null
+    public function failedMessage(): string
     {
         $message = __($key = $this->config('validation.lang_key'));
 
@@ -156,6 +158,6 @@ class GoogleRecaptcha
             return $message;
         }
 
-        return $this->config('validation.failed');
+        return $this->config('validation.failed') ?? self::DEFAULT_ERROR_MESSAGE;
     }
 }

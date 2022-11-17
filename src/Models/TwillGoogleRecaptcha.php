@@ -6,12 +6,15 @@ use A17\Twill\Models\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Crypt;
 use A17\Twill\Models\Behaviors\HasRevisions;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use A17\TwillGoogleRecaptcha\Models\Behaviors\Encrypt;
 
 class TwillGoogleRecaptcha extends Model
 {
     use HasRevisions;
     use Encrypt;
+
+    protected $table = 'twill_ggl_captcha';
 
     protected $fillable = ['published', 'site_key', 'private_key'];
 
@@ -40,7 +43,7 @@ class TwillGoogleRecaptcha extends Model
         return google_recaptcha()->published(true);
     }
 
-    public function revisions()
+    public function revisions(): HasMany
     {
         return $this->hasMany($this->getRevisionModel(), 'twill_grecaptcha_id')->orderBy('created_at', 'desc');
     }

@@ -5,6 +5,7 @@ namespace A17\TwillGoogleRecaptcha;
 use Illuminate\Support\Str;
 use A17\Twill\Facades\TwillCapsules;
 use A17\Twill\TwillPackageServiceProvider;
+use A17\TwillGoogleRecaptcha\Services\Helpers;
 
 class ServiceProvider extends TwillPackageServiceProvider
 {
@@ -35,17 +36,13 @@ class ServiceProvider extends TwillPackageServiceProvider
 
     public function registerViews(): void
     {
-        view()->share(
-            'twillGoogleRecaptcha',
-            google_recaptcha()->config() + ['asset' => google_recaptcha()->asset()]
-        );
-        $this->loadViewsFrom(__DIR__.'/resources/views', 'twill-google-recaptcha');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'twill-google-recaptcha');
     }
 
     public function registerConfig(): void
     {
         $this->publishes([
-            __DIR__.'/config/twill-google-recaptcha.php' => config_path('twill-google-recaptcha.php'),
+            __DIR__ . '/config/twill-google-recaptcha.php' => config_path('twill-google-recaptcha.php'),
         ]);
     }
 }
