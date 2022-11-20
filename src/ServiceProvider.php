@@ -41,8 +41,14 @@ class ServiceProvider extends TwillPackageServiceProvider
 
     public function registerConfig(): void
     {
+        $package = 'twill-google-recaptcha';
+
+        $path = __DIR__ . "/config/{$package}.php";
+
+        $this->mergeConfigFrom($path, $package);
+
         $this->publishes([
-            __DIR__ . '/config/twill-google-recaptcha.php' => config_path('twill-google-recaptcha.php'),
+            $path => config_path("{$package}.php"),
         ]);
     }
 }
