@@ -2,7 +2,7 @@
   "name": "area17/twill-google-recaptcha",
   "description": "A Twill Capsule to add and handle Google reCAPTCHA",
   "homepage": "https://github.com/area17/twill-google-recaptchas",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "require": {
     "php": ">=8.0",
     "area17/twill": "^2.7|^3.0"
