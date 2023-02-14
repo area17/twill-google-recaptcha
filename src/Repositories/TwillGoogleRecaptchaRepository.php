@@ -2,6 +2,7 @@
 
 namespace A17\TwillGoogleRecaptcha\Repositories;
 
+use A17\Twill\Models\Model;
 use A17\Twill\Repositories\ModuleRepository;
 use A17\Twill\Repositories\Behaviors\HandleRevisions;
 use A17\TwillGoogleRecaptcha\Models\TwillGoogleRecaptcha;
@@ -15,7 +16,7 @@ class TwillGoogleRecaptchaRepository extends ModuleRepository
         $this->model = $model;
     }
 
-    public function theOnlyOne(): TwillGoogleRecaptcha
+    public function theOnlyOne(): TwillGoogleRecaptcha|Model
     {
         $record = TwillGoogleRecaptcha::query()
             ->published()
@@ -25,7 +26,7 @@ class TwillGoogleRecaptchaRepository extends ModuleRepository
         return $record ?? $this->generate();
     }
 
-    private function generate(): TwillGoogleRecaptcha
+    private function generate(): TwillGoogleRecaptcha|Model
     {
         return app(self::class)->create([
             'site_key' => null,
