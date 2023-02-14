@@ -21,10 +21,12 @@ class TwillGoogleRecaptchaFrontController
 
     public function store(Request $request): array
     {
+        // You can use the validator as a rule in your request, it will terminate right away if it fails
         $request->validate([
             'g-recaptcha-response' => ['required', 'string', new GoogleRecaptchaValidator()],
         ]);
 
+        // Or you can use the google_recaptcha() verification method directly
         $response = google_recaptcha()->verify($request->get('g-recaptcha-response'));
 
         if (empty($response)) {
@@ -34,6 +36,7 @@ class TwillGoogleRecaptchaFrontController
             ];
         }
 
+        // All good
         return $response->json();
     }
 }
