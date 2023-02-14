@@ -26,7 +26,7 @@ class TwillGoogleRecaptchaFrontController
             'g-recaptcha-response' => ['required', 'string', new GoogleRecaptchaValidator()],
         ]);
 
-        // Or you can use the google_recaptcha() verification
+        // Or you can use the google_recaptcha() verification method directly
         $response = google_recaptcha()->verify($request->get('g-recaptcha-response'));
 
         if (empty($response)) {
