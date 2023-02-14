@@ -8,7 +8,7 @@ class Validator implements Rule
 {
     public function passes($attribute, $value): bool
     {
-        return google_recaptcha()->fails();
+        return google_recaptcha()->passes();
     }
 
     public function message(): string
