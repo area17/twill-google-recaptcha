@@ -2,11 +2,8 @@
 
 namespace A17\TwillGoogleRecaptcha\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
+use A17\Twill\Models\Contracts\TwillModelContract;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Redirect;
 use A17\Twill\Http\Controllers\Admin\ModuleController;
 use A17\TwillGoogleRecaptcha\Models\TwillGoogleRecaptcha;
 use A17\TwillGoogleRecaptcha\Repositories\TwillGoogleRecaptchaRepository;
@@ -17,32 +14,29 @@ class TwillGoogleRecaptchaController extends ModuleController
 
     protected $titleColumnKey = 'site_key';
 
-    protected $indexOptions = ['edit' => false];
+    public function setUpController(): void
+    {
+        $this->disablePermalink();
+        $this->disableEdit();
+    }
 
     public function redirectToEdit(TwillGoogleRecaptchaRepository $repository): RedirectResponse
     {
-        return redirect()->route('admin.twillGoogleRecaptcha.show', ['twillGoogleRecaptcha' => $repository->theOnlyOne()->id]);
+        return redirect()->route('admin.twillGoogleRecaptcha.show', [
+            'twillGoogleRecaptcha' => $repository->theOnlyOne()->id,
+        ]);
     }
 
-    /**
-     * @param int|null $parentModuleId
-     * @return array|\Illuminate\View\View|RedirectResponse
-     */
-    public function index($parentModuleId = null)
+    public function index(?int $parentModuleId = null): RedirectResponse
     {
-        return redirect()->route('admin.twillGoogleRecaptcha.redirectToEdit');
+        return redirect()->route('twill.twillGoogleRecaptcha.redirectToEdit');
     }
 
-    /**
-     * @param int $id
-     * @param int|null $submoduleId
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
-     */
-    public function edit($id, $submoduleId = null)
+    public function edit(TwillModelContract|int $id): mixed
     {
         $repository = new TwillGoogleRecaptchaRepository(new TwillGoogleRecaptcha());
 
-        return parent::edit($repository->theOnlyOne()->id, $submoduleId);
+        return parent::edit($repository->theOnlyOne()->id);
     }
 
     protected function formData($request): array

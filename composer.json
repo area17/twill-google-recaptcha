@@ -1,17 +1,18 @@
 {
   "name": "area17/twill-google-recaptcha",
   "description": "A Twill Capsule to add and handle Google reCAPTCHA",
-  "homepage": "https://github.com/area17/twill-google-recaptchas",
+  "homepage": "https://github.com/area17/twill-google-recaptcha",
   "license": "Apache-2.0",
   "require": {
     "php": ">=8.0",
-    "area17/twill": "^2.7|^3.0"
+    "area17/twill": "^3.0"
   },
   "require-dev": {
       "nunomaduro/larastan": "^2.0",
       "phpstan/phpstan": "^1.8",
       "orchestra/testbench": "^7.11",
-      "friendsofphp/php-cs-fixer": "^3.0"
+      "friendsofphp/php-cs-fixer": "^3.0",
+      "laravel/dusk": "^7.1"
   },
   "autoload": {
     "psr-4": {
