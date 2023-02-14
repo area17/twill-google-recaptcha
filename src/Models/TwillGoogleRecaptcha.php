@@ -3,12 +3,13 @@
 namespace A17\TwillGoogleRecaptcha\Models;
 
 use A17\Twill\Models\Model;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Crypt;
 use A17\Twill\Models\Behaviors\HasRevisions;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use A17\TwillGoogleRecaptcha\Models\Behaviors\Encrypt;
 
+/**
+ * @property int $id
+ */
 class TwillGoogleRecaptcha extends Model
 {
     use HasRevisions;

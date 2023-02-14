@@ -1,0 +1,10 @@
+<?php
+
+namespace A17\Twill\Models;
+
+/**
+ * @property int $id
+ */
+abstract class Model
+{
+}

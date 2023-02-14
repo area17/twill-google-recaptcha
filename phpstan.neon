@@ -20,3 +20,7 @@ parameters:
     excludePaths:
       analyseAndScan:
         - src/Models/Behaviors/Encrypt.php
+
+    stubFiles:
+        - tests/phpstan/stubs/Model.stub
+        - tests/phpstan/stubs/ModuleRepository.stub
