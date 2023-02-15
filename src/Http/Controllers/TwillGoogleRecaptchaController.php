@@ -22,7 +22,7 @@ class TwillGoogleRecaptchaController extends ModuleController
 
     public function redirectToEdit(TwillGoogleRecaptchaRepository $repository): RedirectResponse
     {
-        return redirect()->route('admin.twillGoogleRecaptcha.show', [
+        return redirect()->route('twill.twillGoogleRecaptcha.show', [
             'twillGoogleRecaptcha' => $repository->theOnlyOne()->id,
         ]);
     }
