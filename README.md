@@ -56,6 +56,28 @@ To have a `$twillGoogleRecaptcha` shared on your views, you can call this helper
 \A17\TwillGoogleRecaptcha\Services\Helpers::viewShare()
 ```
 
+One possible example is to use `View::composer()` to load the needed variables into your views: 
+
+``` php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
+use A17\TwillGoogleRecaptcha\Services\Helpers as TwillGoogleRecaptchaHelpers;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function register()
+    {
+        View::composer('*', function () {
+            \A17\TwillGoogleRecaptcha\Services\Helpers::viewShare();
+        });
+    }
+}
+```
+
 #### Test it out
 
 Head to: http://site.com/debug/google-recaptcha-3
