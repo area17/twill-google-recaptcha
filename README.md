@@ -12,19 +12,19 @@ Composer will manage this automatically for you, but these are the supported ver
 
 ### Require the Composer package:
 
-``` bash
+```bash
 composer require area17/twill-google-recaptcha
 ```
 
 ### Publish the configuration
 
-``` bash
+```bash
 php artisan vendor:publish --provider="A17\TwillGoogleRecaptcha\ServiceProvider"
 ```
 
 ### Load Capsule helpers by adding calling the loader to your AppServiceProvider:
 
-``` php
+```php
 /**
  * Register any application services.
  *
@@ -60,7 +60,7 @@ Route::prefix('/debug')->group(function () {
 
 To have a `$twillGoogleRecaptcha` shared on your views, you can call this helper on your `AppServiceProvider`: 
 
-``` php
+```php
 \A17\TwillGoogleRecaptcha\Services\Helpers::viewShare()
 ```
 
