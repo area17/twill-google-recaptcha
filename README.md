@@ -93,8 +93,8 @@ Head to: http://site.com/debug/google-recaptcha-3
 #### Captcha keys works both on .env or in the CMS settings, but .env trumps the CMS settings
 
 ```dotenv
-TWILL_GOOGLE_RECAPTCHA_SITE_KEY=61df2g3hjkj7hgf6df54g3hj2kl3k4j5h6G
-TWILL_GOOGLE_RECAPTCHA_PRIVATE_KEY=6Lg5h43jkl45k6jh7g6h5j4kl3nj5k4l3P
+TWILL_GOOGLE_RECAPTCHA_SITE_KEY=<public key>
+TWILL_GOOGLE_RECAPTCHA_PRIVATE_KEY=<private key>
 TWILL_GOOGLE_RECAPTCHA_ENABLED=true
 ```
 
