@@ -27,7 +27,10 @@ class TwillGoogleRecaptchaController extends ModuleController
         ]);
     }
 
-    public function index(?int $parentModuleId = null): RedirectResponse
+    /**
+     * @return array|\Illuminate\Contracts\View\View|\Illuminate\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    public function index(int|null $parentModuleId = null): mixed
     {
         return redirect()->route('twill.twillGoogleRecaptcha.redirectToEdit');
     }
