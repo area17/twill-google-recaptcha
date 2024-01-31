@@ -12,10 +12,15 @@ class ServiceProvider extends TwillPackageServiceProvider
     /** @var bool $autoRegisterCapsules */
     protected $autoRegisterCapsules = false;
 
+    public function register(): void
+    {
+        parent::register();
+
+        $this->loadHelpers();
+    }
+
     public function boot(): void
     {
-        $this->loadHelpers();
-
         $this->registerThisCapsule();
 
         $this->registerViews();
