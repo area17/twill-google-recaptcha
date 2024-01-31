@@ -10,7 +10,7 @@ use A17\TwillGoogleRecaptcha\Repositories\TwillGoogleRecaptchaRepository;
 
 class TwillGoogleRecaptchaController extends ModuleController
 {
-    protected $moduleName = 'twillGoogleRecaptcha';
+    protected $moduleName = 'twillGoogleRecaptchas';
 
     protected $titleColumnKey = 'site_key';
 
@@ -22,7 +22,7 @@ class TwillGoogleRecaptchaController extends ModuleController
 
     public function redirectToEdit(TwillGoogleRecaptchaRepository $repository): RedirectResponse
     {
-        return redirect()->route('twill.twillGoogleRecaptcha.show', [
+        return redirect()->route('twill.twillGoogleRecaptchas.show', [
             'twillGoogleRecaptcha' => $repository->theOnlyOne()->id,
         ]);
     }
@@ -32,7 +32,7 @@ class TwillGoogleRecaptchaController extends ModuleController
      */
     public function index(int|null $parentModuleId = null): mixed
     {
-        return redirect()->route('twill.twillGoogleRecaptcha.redirectToEdit');
+        return redirect()->route('twill.twillGoogleRecaptchas.redirectToEdit');
     }
 
     public function edit(TwillModelContract|int $id): mixed

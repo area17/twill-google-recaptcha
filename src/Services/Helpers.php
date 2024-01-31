@@ -24,6 +24,6 @@ class Helpers
     {
         $googleRecaptcha = Helpers::googleRecaptchaInstance();
 
-        view()->share('twillGoogleRecaptcha', $googleRecaptcha->config() + ['asset' => $googleRecaptcha->asset()]);
+        view()->share('twillGoogleRecaptchas', $googleRecaptcha->config() + ['asset' => $googleRecaptcha->asset()]);
     }
 }
