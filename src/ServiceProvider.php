@@ -14,6 +14,8 @@ class ServiceProvider extends TwillPackageServiceProvider
 
     public function boot(): void
     {
+        $this->loadHelpers();
+
         $this->registerThisCapsule();
 
         $this->registerViews();
@@ -50,5 +52,10 @@ class ServiceProvider extends TwillPackageServiceProvider
         $this->publishes([
             $path => config_path("{$package}.php"),
         ]);
+    }
+
+    public function loadHelpers(): void
+    {
+        Helpers::load();
     }
 }
