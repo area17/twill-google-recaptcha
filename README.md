@@ -22,20 +22,6 @@ composer require area17/twill-google-recaptcha
 php artisan vendor:publish --provider="A17\TwillGoogleRecaptcha\ServiceProvider"
 ```
 
-### Load Capsule helpers by adding calling the loader to your AppServiceProvider:
-
-```php
-/**
- * Register any application services.
- *
- * @return void
- */
-public function register()
-{
-    \A17\TwillGoogleRecaptcha\Services\Helpers::load();
-}
-```
-
 #### Create debugging routes to check if it's all good
 
 ```php
